@@ -11,8 +11,11 @@ export default defineConfig({
 				main: resolve(__dirname, 'index.html'),
 				home: resolve(__dirname, 'pages/index.html'),
 				account: resolve(__dirname, 'pages/account.html'),
-				discover: resolve(__dirname, 'pages/discover.html'),
-				notfound: resolve(__dirname, 'pages/notfound.html'),
+				programs: resolve(__dirname, 'pages/programs.html'),
+				program: resolve(__dirname, 'pages/program.html'),
+				nutrition: resolve(__dirname, 'pages/nutrition.html'),
+				live: resolve(__dirname, 'pages/live.html'),
+				progress: resolve(__dirname, 'pages/progress.html'),
 			},
 		},
 	}

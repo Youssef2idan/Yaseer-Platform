@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يسير - تفاصيل البرنامج</title>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="font-arabic bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-blue-600">يسير</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">الرئيسية</a>
+                        <a href="programs.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium">البرامج</a>
+                        <a href="nutrition.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">التغذية</a>
+                        <a href="live.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">الحصص المباشرة</a>
+                        <a href="progress.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">تتبع التقدم</a>
+                        <a href="account.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">حسابي</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button id="langToggle" class="text-sm text-gray-600 hover:text-blue-600">EN</button>
+                    <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">تسجيل الدخول</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div id="programHeader" class="mb-8">
+            <h1 class="text-3xl font-bold">تفاصيل البرنامج</h1>
+            <p id="programDesc" class="text-gray-600 mt-2"></p>
+        </div>
+
+        <section class="bg-white rounded-2xl shadow p-6 mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-semibold mb-2">اختر المستوى</h2>
+                    <div id="levels" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div>
+                    <button id="startPlan" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold">ابدأ الخطة</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid lg:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl shadow p-6">
+                <h3 class="text-lg font-semibold mb-4">فيديو التقنية</h3>
+                <div class="aspect-video bg-gray-200 rounded-xl flex items-center justify-center text-gray-600">فيديو تعليمي (Placeholder)</div>
+            </div>
+            <div class="bg-white rounded-2xl shadow p-6">
+                <h3 class="text-lg font-semibold mb-4">خطة يوم نموذجي</h3>
+                <div id="sampleDay" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 يسير. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js" type="module"></script>
+    <script type="module">
+        import { Data } from './js/data.js';
+        import { Auth } from './js/auth.js';
+
+        const url = new URL(window.location.href);
+        const sportId = url.searchParams.get('sport') || 'kickboxing';
+
+        const header = document.getElementById('programHeader');
+        const desc = document.getElementById('programDesc');
+        const levels = document.getElementById('levels');
+        const sampleDay = document.getElementById('sampleDay');
+        const startPlan = document.getElementById('startPlan');
+
+        let selectedProgramId = null;
+
+        async function load() {
+            const sport = await Data.getSportById(sportId);
+            header.querySelector('h1').textContent = sport.name.ar;
+            desc.textContent = sport.description.ar;
+
+            // Render level buttons and first program
+            levels.innerHTML = '';
+            sport.levels.forEach(lvl => {
+                const btn = document.createElement('button');
+                btn.className = 'px-4 py-2 rounded-lg border border-gray-300 hover:border-blue-600 hover:text-blue-600';
+                btn.textContent = lvl.name.ar;
+                btn.addEventListener('click', () => selectLevel(lvl));
+                levels.appendChild(btn);
+            });
+            if (sport.levels.length) selectLevel(sport.levels[0]);
+        }
+
+        function selectLevel(level) {
+            // Pick first program in level
+            const program = level.programs[0];
+            selectedProgramId = program.id;
+            window.toast.info('تم اختيار: ' + program.name.ar);
+            renderSampleDay(sportId);
+        }
+
+        function renderSampleDay(sport) {
+            const day = Data.getSampleDay(sport);
+            sampleDay.innerHTML = '';
+
+            const blocks = [
+                { title: 'الإحماء', items: day.warmup },
+                { title: 'التمرين الأساسي', items: day.main },
+                { title: 'التهدئة', items: day.cooldown },
+            ];
+            blocks.forEach(b => {
+                const card = document.createElement('div');
+                card.className = 'border border-gray-200 rounded-xl p-4';
+                card.innerHTML = `<h4 class="font-semibold mb-2">${b.title}</h4>` +
+                    `<ul class="list-disc pr-6 text-gray-700 space-y-1">${b.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+                sampleDay.appendChild(card);
+            });
+        }
+
+        startPlan.addEventListener('click', () => {
+            const user = Auth.getUser();
+            if (!user) {
+                window.location.href = 'account.html?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
+                return;
+            }
+            window.toast.success('تم تفعيل خطتك! الشهر الأول مجاني');
+        });
+
+        load();
+    </script>
+</body>
+</html> 

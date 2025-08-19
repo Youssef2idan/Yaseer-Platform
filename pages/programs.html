@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يسير - البرامج</title>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="font-arabic bg-gray-50 text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-blue-600">يسير</div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">الرئيسية</a>
+                        <a href="programs.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium">البرامج</a>
+                        <a href="nutrition.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">التغذية</a>
+                        <a href="live.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">الحصص المباشرة</a>
+                        <a href="progress.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">تتبع التقدم</a>
+                        <a href="account.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">حسابي</a>
+                    </div>
+                </div>
+
+                <!-- Right side - Language toggle and Auth -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button id="langToggle" class="text-sm text-gray-600 hover:text-blue-600">EN</button>
+                    <div id="authSection" class="hidden md:block">
+                        <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">تسجيل الدخول</a>
+                    </div>
+                    <div id="userSection" class="hidden md:block">
+                        <div class="relative">
+                            <button id="userMenuBtn" class="flex items-center space-x-2 space-x-reverse text-gray-700 hover:text-blue-600">
+                                <span id="userName">اسم المستخدم</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="userDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                                <a href="account.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">الملف الشخصي</a>
+                                <a href="progress.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تقدمي</a>
+                                <button id="logoutBtn" class="block w-full text-right px-4 py-2 text-sm text-red-600 hover:bg-gray-100">تسجيل الخروج</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-blue-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobileMenu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 space-y-reverse">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">الرئيسية</a>
+                    <a href="programs.html" class="text-blue-600 block px-3 py-2 rounded-md text-base font-medium">البرامج</a>
+                    <a href="nutrition.html" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">التغذية</a>
+                    <a href="live.html" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">الحصص المباشرة</a>
+                    <a href="progress.html" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">تتبع التقدم</a>
+                    <a href="account.html" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">حسابي</a>
+                    <div class="pt-4 border-t border-gray-200">
+                        <button id="mobileLangToggle" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">تغيير اللغة</button>
+                        <div id="mobileAuthSection" class="block">
+                            <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium mt-2">تسجيل الدخول</a>
+                        </div>
+                        <div id="mobileUserSection" class="hidden">
+                            <div class="px-3 py-2 text-sm text-gray-600">مرحباً، <span id="mobileUserName">اسم المستخدم</span></div>
+                            <a href="account.html" class="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600">الملف الشخصي</a>
+                            <a href="progress.html" class="block px-3 py-2 text-sm text-gray-700 hover:text-blue-600">تقدمي</a>
+                            <button id="mobileLogoutBtn" class="block w-full text-right px-3 py-2 text-sm text-red-600 hover:text-red-700">تسجيل الخروج</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-3xl font-bold mb-2">البرامج التدريبية</h1>
+            <p class="text-gray-600">اختر رياضتك المفضلة وابدأ الشهر المجاني</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <section class="mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <label for="sportFilter" class="text-sm text-gray-700">اختر الرياضة:</label>
+                    <select id="sportFilter" class="border border-gray-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="all">الكل</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-3">
+                    <label for="levelFilter" class="text-sm text-gray-700">المستوى:</label>
+                    <select id="levelFilter" class="border border-gray-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="all">الكل</option>
+                        <option value="beginner">مبتدئ</option>
+                        <option value="intermediate">متوسط</option>
+                        <option value="advanced">متقدم</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div id="programsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 يسير. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js" type="module"></script>
+    <script src="js/navigation.js" type="module"></script>
+    <script type="module">
+        import { Data } from './js/data.js';
+        import { UI } from './js/ui.js';
+
+        const programsGrid = document.getElementById('programsGrid');
+        const sportFilter = document.getElementById('sportFilter');
+        const levelFilter = document.getElementById('levelFilter');
+
+        async function load() {
+            const data = await Data.getSports();
+            // Populate sport filter
+            data.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.id;
+                opt.textContent = s.name.ar;
+                sportFilter.appendChild(opt);
+            });
+            render();
+        }
+
+        function render() {
+            programsGrid.innerHTML = '';
+            const sport = sportFilter.value;
+            const level = levelFilter.value;
+
+            Data.getAllPrograms({ sport, level }).then(items => {
+                if (!items.length) {
+                    programsGrid.innerHTML = '<div class="col-span-full text-center text-gray-600">لا توجد برامج مطابقة</div>';
+                    return;
+                }
+                items.forEach(p => programsGrid.appendChild(UI.createProgramCard(p)));
+            });
+        }
+
+        sportFilter.addEventListener('change', render);
+        levelFilter.addEventListener('change', render);
+
+        load();
+    </script>
+</body>
+</html>

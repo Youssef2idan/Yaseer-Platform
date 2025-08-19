@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يسير - التغذية</title>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="font-arabic bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-blue-600">يسير</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">الرئيسية</a>
+                        <a href="programs.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">البرامج</a>
+                        <a href="nutrition.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium">التغذية</a>
+                        <a href="live.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">الحصص المباشرة</a>
+                        <a href="progress.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">تتبع التقدم</a>
+                        <a href="account.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">حسابي</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button id="langToggle" class="text-sm text-gray-600 hover:text-blue-600">EN</button>
+                    <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">تسجيل الدخول</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <header class="mb-6">
+            <h1 class="text-3xl font-bold">خطط التغذية</h1>
+            <p class="text-gray-600">الشهر الأول مجاناً</p>
+        </header>
+
+        <section class="bg-white rounded-2xl shadow p-6 mb-8">
+            <div class="grid md:grid-cols-3 gap-4">
+                <div>
+                    <label class="text-sm text-gray-700">الهدف</label>
+                    <select id="goalSelect" class="w-full mt-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                </div>
+                <div>
+                    <label class="text-sm text-gray-700">الخطة</label>
+                    <select id="planSelect" class="w-full mt-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                </div>
+                <div class="flex items-end">
+                    <button id="startNutrition" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl font-semibold">ابدأ الشهر المجاني</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl shadow p-6">
+                <h3 class="text-lg font-semibold mb-4">السعرات والمغذيات</h3>
+                <div id="macros" class="grid grid-cols-3 gap-4 text-center">
+                    <div class="p-4 rounded-xl bg-blue-50">
+                        <div class="text-2xl font-bold" id="calories">--</div>
+                        <div class="text-gray-600 text-sm">سعرات</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-green-50">
+                        <div class="text-2xl font-bold" id="protein">--g</div>
+                        <div class="text-gray-600 text-sm">بروتين</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-yellow-50">
+                        <div class="text-2xl font-bold" id="carbs">--g</div>
+                        <div class="text-gray-600 text-sm">كربوهيدرات</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow p-6 lg:col-span-2">
+                <h3 class="text-lg font-semibold mb-4">قائمة أسبوعية (مثال)</h3>
+                <div id="menu" class="grid sm:grid-cols-2 gap-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 يسير. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js" type="module"></script>
+    <script type="module">
+        import { Data } from './js/data.js';
+        import { Auth } from './js/auth.js';
+
+        const goalSelect = document.getElementById('goalSelect');
+        const planSelect = document.getElementById('planSelect');
+        const calories = document.getElementById('calories');
+        const protein = document.getElementById('protein');
+        const carbs = document.getElementById('carbs');
+        const menu = document.getElementById('menu');
+        const startBtn = document.getElementById('startNutrition');
+
+        let currentGoal = null;
+        let currentPlan = null;
+
+        async function load() {
+            const goals = await Data.getNutritionGoals();
+            goals.forEach(g => {
+                const opt = document.createElement('option');
+                opt.value = g.id;
+                opt.textContent = g.name.ar;
+                goalSelect.appendChild(opt);
+            });
+            if (goals.length) {
+                goalSelect.value = goals[0].id;
+                await loadPlans();
+            }
+        }
+
+        async function loadPlans() {
+            currentGoal = goalSelect.value;
+            const plans = await Data.getNutritionPlans(currentGoal);
+            planSelect.innerHTML = '';
+            plans.forEach(p => {
+                const opt = document.createElement('option');
+                opt.value = p.id;
+                opt.textContent = p.name.ar + (p.isFree ? ' - مجاني' : '');
+                planSelect.appendChild(opt);
+            });
+            if (plans.length) {
+                planSelect.value = plans[0].id;
+                renderPlan(await Data.getNutritionPlanById(currentGoal, planSelect.value));
+            }
+        }
+
+        function renderPlan(plan) {
+            currentPlan = plan;
+            calories.textContent = plan.calories;
+            protein.textContent = plan.macros.protein + 'g';
+            carbs.textContent = plan.macros.carbs + 'g';
+
+            // Render Monday example menu
+            const monday = plan.weeklyMenu.monday;
+            menu.innerHTML = '';
+            Object.entries(monday).forEach(([meal, info]) => {
+                const card = document.createElement('div');
+                card.className = 'border border-gray-200 rounded-xl p-4';
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-semibold">${meal}</h4>
+                        <span class="text-sm text-gray-500">${info.calories} kcal</span>
+                    </div>
+                    <p class="text-gray-700">${info.ar}</p>
+                `;
+                menu.appendChild(card);
+            });
+        }
+
+        startBtn.addEventListener('click', () => {
+            const user = Auth.getUser();
+            if (!user) {
+                window.location.href = 'account.html?redirect=' + encodeURIComponent(window.location.pathname);
+                return;
+            }
+            window.toast.success('تم تفعيل خطة التغذية! الشهر الأول مجاني');
+        });
+
+        goalSelect.addEventListener('change', loadPlans);
+        planSelect.addEventListener('change', async () => {
+            renderPlan(await Data.getNutritionPlanById(currentGoal, planSelect.value));
+        });
+
+        load();
+    </script>
+</body>
+</html> 

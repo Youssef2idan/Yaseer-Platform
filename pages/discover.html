@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discover</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="min-h-screen bg-blue-50 pt-16 pb-24">
+    <header class="fixed top-0 inset-x-0 bg-white shadow-sm z-50 border-b border-blue-100">
+      <div class="h-16 flex items-center justify-center">
+        <h1 class="text-base font-semibold text-blue-600">Discover</h1>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+      <section>
+        <h2 class="text-lg font-semibold mb-4">Quick Access</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">📅</span>
+            <span class="mt-2 font-medium">Schedule</span>
+          </a>
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">📚</span>
+            <span class="mt-2 font-medium">Resources</span>
+          </a>
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">🤖</span>
+            <span class="mt-2 font-medium">AI Robot</span>
+          </a>
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">✅</span>
+            <span class="mt-2 font-medium">Marks</span>
+          </a>
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28 md:col-span-2">
+            <span class="text-4xl">🕌</span>
+            <span class="mt-2 font-medium">Hadith Support</span>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold mb-4">Learning Resources</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">👥</span>
+            <span class="mt-2 font-medium">Groups</span>
+          </a>
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">🏆</span>
+            <span class="mt-2 font-medium">Activities</span>
+          </a>
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">📝</span>
+            <span class="mt-2 font-medium">Sheets</span>
+          </a>
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">🎬</span>
+            <span class="mt-2 font-medium">Videos</span>
+          </a>
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">❓</span>
+            <span class="mt-2 font-medium">Quizzes</span>
+          </a>
+          <a href="#" class="bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col items-center justify-center text-center h-24 md:h-28">
+            <span class="text-4xl">📖</span>
+            <span class="mt-2 font-medium">How to Use</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <nav class="fixed bottom-0 inset-x-0 z-50">
+      <div class="max-w-md mx-auto px-4 pb-2">
+        <div class="bg-white border shadow rounded-full h-14 flex items-center justify-around">
+          <a href="/pages/index.html" class="flex flex-col items-center text-gray-500 hover:text-gray-900 text-xs">
+            <span class="text-xl">🏠</span>
+            <span>Home</span>
+          </a>
+          <a href="/pages/discover.html" class="flex flex-col items-center text-blue-600 text-xs font-medium">
+            <span class="text-xl">🔎</span>
+            <span>Discover</span>
+          </a>
+          <a href="/pages/account.html" class="flex flex-col items-center text-gray-500 hover:text-gray-900 text-xs">
+            <span class="text-xl">👤</span>
+            <span>Account</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="app"></div>
+    <script type="module" src="/js/discover.js"></script>
+  </body>
+</html>
+
+

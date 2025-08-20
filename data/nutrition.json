@@ -1,0 +1,324 @@
+{
+  "goals": [
+    {
+      "id": "cut",
+      "name": {
+        "ar": "خسارة الوزن",
+        "en": "Weight Loss"
+      },
+      "description": {
+        "ar": "خطة تغذية لخسارة الوزن مع الحفاظ على العضلات",
+        "en": "Nutrition plan for weight loss while preserving muscle"
+      },
+      "icon": "📉",
+      "color": "red",
+      "plans": [
+        {
+          "id": "cut-beginner",
+          "name": {
+            "ar": "خطة المبتدئين",
+            "en": "Beginner Plan"
+          },
+          "calories": 1800,
+          "macros": {
+            "protein": 150,
+            "carbs": 150,
+            "fat": 60
+          },
+          "meals": 5,
+          "price": 0,
+          "isFree": true,
+          "weeklyMenu": {
+            "monday": {
+              "breakfast": {
+                "ar": "شوفان مع التوت والجوز",
+                "en": "Oatmeal with berries and nuts",
+                "calories": 350,
+                "protein": 15,
+                "carbs": 45,
+                "fat": 12
+              },
+              "snack1": {
+                "ar": "زبادي يوناني مع التفاح",
+                "en": "Greek yogurt with apple",
+                "calories": 200,
+                "protein": 20,
+                "carbs": 25,
+                "fat": 5
+              },
+              "lunch": {
+                "ar": "صدر دجاج مشوي مع الأرز البني والخضار",
+                "en": "Grilled chicken breast with brown rice and vegetables",
+                "calories": 450,
+                "protein": 35,
+                "carbs": 45,
+                "fat": 15
+              },
+              "snack2": {
+                "ar": "مكسرات مشكلة",
+                "en": "Mixed nuts",
+                "calories": 200,
+                "protein": 8,
+                "carbs": 10,
+                "fat": 18
+              },
+              "dinner": {
+                "ar": "سمك السلمون مع البطاطا الحلوة",
+                "en": "Salmon with sweet potato",
+                "calories": 400,
+                "protein": 35,
+                "carbs": 30,
+                "fat": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "cut-intermediate",
+          "name": { "ar": "خطة متوسطة", "en": "Intermediate Plan" },
+          "calories": 2000,
+          "macros": { "protein": 170, "carbs": 160, "fat": 65 },
+          "meals": 5,
+          "price": 149,
+          "isFree": false,
+          "weeklyMenu": {
+            "monday": {
+              "breakfast": { "ar": "توست بروتين وبيض", "en": "Protein toast with eggs", "calories": 320, "protein": 25, "carbs": 30, "fat": 10 },
+              "snack1": { "ar": "تفاح ولوز", "en": "Apple and almonds", "calories": 180, "protein": 6, "carbs": 20, "fat": 8 },
+              "lunch": { "ar": "تونة وسلطة كينوا", "en": "Tuna and quinoa salad", "calories": 480, "protein": 35, "carbs": 45, "fat": 16 },
+              "snack2": { "ar": "بروتين شيك", "en": "Protein shake", "calories": 220, "protein": 25, "carbs": 8, "fat": 5 },
+              "dinner": { "ar": "ديك رومي وخضار مشوية", "en": "Turkey and grilled veggies", "calories": 480, "protein": 40, "carbs": 30, "fat": 16 }
+            }
+          }
+        },
+        {
+          "id": "cut-advanced",
+          "name": { "ar": "خطة متقدمة", "en": "Advanced Plan" },
+          "calories": 2100,
+          "macros": { "protein": 190, "carbs": 140, "fat": 70 },
+          "meals": 6,
+          "price": 199,
+          "isFree": false,
+          "weeklyMenu": {
+            "monday": {
+              "breakfast": { "ar": "شوفان وبروتين شيك", "en": "Oats and protein shake", "calories": 380, "protein": 30, "carbs": 40, "fat": 8 },
+              "snack1": { "ar": "جبن قريش وخيار", "en": "Cottage cheese and cucumber", "calories": 160, "protein": 18, "carbs": 6, "fat": 6 },
+              "lunch": { "ar": "صدور دجاج وأرز بسمتي وخضار", "en": "Chicken breast, basmati rice, veggies", "calories": 520, "protein": 40, "carbs": 50, "fat": 14 },
+              "snack2": { "ar": "زبادي يوناني ومكسرات", "en": "Greek yogurt and nuts", "calories": 240, "protein": 20, "carbs": 12, "fat": 12 },
+              "dinner": { "ar": "سلمون وهليون", "en": "Salmon and asparagus", "calories": 520, "protein": 40, "carbs": 20, "fat": 24 }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "bulk",
+      "name": {
+        "ar": "زيادة الوزن",
+        "en": "Weight Gain"
+      },
+      "description": {
+        "ar": "خطة تغذية لزيادة الوزن وبناء العضلات",
+        "en": "Nutrition plan for weight gain and muscle building"
+      },
+      "icon": "📈",
+      "color": "green",
+      "plans": [
+        {
+          "id": "bulk-beginner",
+          "name": {
+            "ar": "خطة المبتدئين",
+            "en": "Beginner Plan"
+          },
+          "calories": 2800,
+          "macros": {
+            "protein": 200,
+            "carbs": 300,
+            "fat": 80
+          },
+          "meals": 6,
+          "price": 0,
+          "isFree": true,
+          "weeklyMenu": {
+            "monday": {
+              "breakfast": { "ar": "عجة البيض مع الجبن والخبز المحمص", "en": "Egg omelette with cheese and toast", "calories": 500, "protein": 30, "carbs": 45, "fat": 25 },
+              "snack1": { "ar": "بروتين شيك مع المكسرات", "en": "Protein shake with nuts", "calories": 400, "protein": 35, "carbs": 40, "fat": 15 },
+              "lunch": { "ar": "صدر دجاج مع الأرز البني والبطاطا", "en": "Chicken breast with brown rice and potatoes", "calories": 600, "protein": 45, "carbs": 70, "fat": 20 },
+              "snack2": { "ar": "زبادي يوناني مع العسل والجوز", "en": "Greek yogurt with honey and nuts", "calories": 300, "protein": 25, "carbs": 30, "fat": 15 },
+              "dinner": { "ar": "لحم البقر مع المعكرونة والخضار", "en": "Beef with pasta and vegetables", "calories": 650, "protein": 50, "carbs": 75, "fat": 25 },
+              "snack3": { "ar": "كوب من الحليب مع الكوكيز", "en": "Glass of milk with cookies", "calories": 350, "protein": 15, "carbs": 40, "fat": 15 }
+            }
+          }
+        },
+        {
+          "id": "bulk-intermediate",
+          "name": { "ar": "خطة متوسطة", "en": "Intermediate Plan" },
+          "calories": 3200,
+          "macros": { "protein": 220, "carbs": 360, "fat": 90 },
+          "meals": 6,
+          "price": 149,
+          "isFree": false,
+          "weeklyMenu": { "monday": { "breakfast": { "ar": "فول وبيض وعيش بلدي", "en": "Fava beans, eggs, local bread", "calories": 600, "protein": 28, "carbs": 70, "fat": 20 }, "snack1": { "ar": "موز وبروتين شيك", "en": "Banana and protein shake", "calories": 400, "protein": 30, "carbs": 45, "fat": 8 }, "lunch": { "ar": "لحم مفروم وأرز وخضار", "en": "Minced beef, rice, veggies", "calories": 700, "protein": 50, "carbs": 80, "fat": 22 }, "snack2": { "ar": "توست مع زبدة الفول السوداني", "en": "Toast with peanut butter", "calories": 300, "protein": 12, "carbs": 30, "fat": 14 }, "dinner": { "ar": "دجاج ومكرونة وصلصة طماطم", "en": "Chicken, pasta, tomato sauce", "calories": 700, "protein": 50, "carbs": 90, "fat": 16 } } }
+        },
+        {
+          "id": "bulk-advanced",
+          "name": { "ar": "خطة متقدمة", "en": "Advanced Plan" },
+          "calories": 3600,
+          "macros": { "protein": 240, "carbs": 420, "fat": 100 },
+          "meals": 7,
+          "price": 199,
+          "isFree": false,
+          "weeklyMenu": { "monday": { "breakfast": { "ar": "شوفان، عسل، زبيب، لبن", "en": "Oats, honey, raisins, milk", "calories": 700, "protein": 30, "carbs": 100, "fat": 16 }, "snack1": { "ar": "تمر ومكسرات", "en": "Dates and nuts", "calories": 350, "protein": 8, "carbs": 50, "fat": 12 }, "lunch": { "ar": "كفتة بالفرن، رز بسمتي، سلطة", "en": "Baked kofta, basmati rice, salad", "calories": 800, "protein": 55, "carbs": 90, "fat": 24 }, "snack2": { "ar": "زبادي وبروتين شيك", "en": "Yogurt and protein shake", "calories": 300, "protein": 35, "carbs": 10, "fat": 6 }, "dinner": { "ar": "سمك وخبز ومهروس بطاطس", "en": "Fish, bread, mashed potatoes", "calories": 800, "protein": 55, "carbs": 100, "fat": 18 } } }
+        }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "name": {
+        "ar": "الحفاظ على الوزن",
+        "en": "Weight Maintenance"
+      },
+      "description": {
+        "ar": "خطة تغذية للحفاظ على الوزن والصحة العامة",
+        "en": "Nutrition plan for weight maintenance and general health"
+      },
+      "icon": "⚖️",
+      "color": "blue",
+      "plans": [
+        {
+          "id": "maintenance-beginner",
+          "name": {
+            "ar": "خطة المبتدئين",
+            "en": "Beginner Plan"
+          },
+          "calories": 2200,
+          "macros": {
+            "protein": 170,
+            "carbs": 220,
+            "fat": 70
+          },
+          "meals": 5,
+          "price": 0,
+          "isFree": true,
+          "weeklyMenu": {
+            "monday": {
+              "breakfast": { "ar": "شوفان مع الفواكه والمكسرات", "en": "Oatmeal with fruits and nuts", "calories": 400, "protein": 18, "carbs": 55, "fat": 18 },
+              "snack1": { "ar": "زبادي يوناني مع التوت", "en": "Greek yogurt with berries", "calories": 200, "protein": 20, "carbs": 25, "fat": 5 },
+              "lunch": { "ar": "صدر دجاج مع الأرز والخضار", "en": "Chicken breast with rice and vegetables", "calories": 500, "protein": 40, "carbs": 55, "fat": 18 },
+              "snack2": { "ar": "تفاح مع زبدة الفول السوداني", "en": "Apple with peanut butter", "calories": 250, "protein": 8, "carbs": 30, "fat": 12 },
+              "dinner": { "ar": "سمك السلمون مع البطاطا والخضار", "en": "Salmon with potatoes and vegetables", "calories": 450, "protein": 35, "carbs": 40, "fat": 20 }
+            }
+          }
+        },
+        {
+          "id": "maintenance-intermediate",
+          "name": { "ar": "خطة متوسطة", "en": "Intermediate Plan" },
+          "calories": 2400,
+          "macros": { "protein": 180, "carbs": 250, "fat": 75 },
+          "meals": 5,
+          "price": 129,
+          "isFree": false,
+          "weeklyMenu": { "monday": { "breakfast": { "ar": "بيض مسلوق وتوست كامل", "en": "Boiled eggs and whole toast", "calories": 380, "protein": 24, "carbs": 30, "fat": 14 }, "snack1": { "ar": "موزة ولبن", "en": "Banana and milk", "calories": 220, "protein": 10, "carbs": 32, "fat": 6 }, "lunch": { "ar": "كبدة، رز وخضار", "en": "Liver, rice, veggies", "calories": 540, "protein": 40, "carbs": 60, "fat": 16 }, "snack2": { "ar": "فشار بزيت زيتون", "en": "Popcorn with olive oil", "calories": 200, "protein": 5, "carbs": 30, "fat": 8 }, "dinner": { "ar": "ديك رومي وبطاطس وخضار", "en": "Turkey, potatoes, veggies", "calories": 520, "protein": 40, "carbs": 50, "fat": 14 } } }
+        },
+        {
+          "id": "maintenance-advanced",
+          "name": { "ar": "خطة متقدمة", "en": "Advanced Plan" },
+          "calories": 2500,
+          "macros": { "protein": 190, "carbs": 240, "fat": 80 },
+          "meals": 6,
+          "price": 169,
+          "isFree": false,
+          "weeklyMenu": { "monday": { "breakfast": { "ar": "زبادي، عسل، مكسرات", "en": "Yogurt, honey, nuts", "calories": 420, "protein": 25, "carbs": 35, "fat": 18 }, "snack1": { "ar": "بروتين شيك", "en": "Protein shake", "calories": 220, "protein": 25, "carbs": 8, "fat": 5 }, "lunch": { "ar": "سمك مشوي ورز وخضار", "en": "Grilled fish, rice, veggies", "calories": 550, "protein": 45, "carbs": 55, "fat": 12 }, "snack2": { "ar": "فاكهة موسمية", "en": "Seasonal fruit", "calories": 150, "protein": 2, "carbs": 35, "fat": 1 }, "dinner": { "ar": "دجاج وخضار مشوية", "en": "Chicken and grilled veggies", "calories": 520, "protein": 40, "carbs": 35, "fat": 18 } } }
+        }
+      ]
+    }
+  ],
+  "supplements": [
+    {
+      "id": "protein",
+      "name": {
+        "ar": "بروتين مصل اللبن",
+        "en": "Whey Protein"
+      },
+      "description": {
+        "ar": "مكمل بروتين عالي الجودة لبناء العضلات",
+        "en": "High-quality protein supplement for muscle building"
+      },
+      "dosage": "20-30g per serving",
+      "timing": "Post-workout or between meals",
+      "price": 29.99
+    },
+    {
+      "id": "creatine",
+      "name": {
+        "ar": "كرياتين مونوهيدرات",
+        "en": "Creatine Monohydrate"
+      },
+      "description": {
+        "ar": "مكمل لزيادة القوة والطاقة",
+        "en": "Supplement for increasing strength and energy"
+      },
+      "dosage": "5g per day",
+      "timing": "Any time of day",
+      "price": 19.99
+    },
+    {
+      "id": "bcaa",
+      "name": {
+        "ar": "أحماض أمينية متفرعة السلسلة",
+        "en": "Branched Chain Amino Acids"
+      },
+      "description": {
+        "ar": "مكمل لتقليل تعب العضلات",
+        "en": "Supplement to reduce muscle fatigue"
+      },
+      "dosage": "5-10g per serving",
+      "timing": "During or after workout",
+      "price": 24.99
+    }
+  ],
+  "tips": [
+    {
+      "category": "general",
+      "title": {
+        "ar": "نصائح عامة للتغذية",
+        "en": "General Nutrition Tips"
+      },
+      "tips": [
+        "اشرب 8-10 أكواب من الماء يومياً",
+        "تناول وجبات متوازنة كل 3-4 ساعات",
+        "ركز على الأطعمة الكاملة والطبيعية",
+        "خطط لوجباتك مسبقاً",
+        "استمع لجسمك وتناول عند الجوع"
+      ]
+    },
+    {
+      "category": "preworkout",
+      "title": {
+        "ar": "تغذية ما قبل التمرين",
+        "en": "Pre-Workout Nutrition"
+      },
+      "tips": [
+        "تناول وجبة خفيفة قبل التمرين بساعة إلى ساعتين",
+        "ركز على الكربوهيدرات المعقدة",
+        "تجنب الوجبات الدسمة قبل التمرين",
+        "اشرب كمية كافية من الماء",
+        "يمكن تناول مكملات الكافيين"
+      ]
+    },
+    {
+      "category": "postworkout",
+      "title": {
+        "ar": "تغذية ما بعد التمرين",
+        "en": "Post-Workout Nutrition"
+      },
+      "tips": [
+        "تناول البروتين خلال 30 دقيقة بعد التمرين",
+        "أضف الكربوهيدرات لاستعادة الطاقة",
+        "اشرب كمية كافية من الماء",
+        "تجنب الوجبات الدسمة",
+        "ركز على الأطعمة سهلة الهضم"
+      ]
+    }
+  ]
+} 

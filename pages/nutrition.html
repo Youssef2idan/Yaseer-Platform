@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>يسير - التغذية</title>
-    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="css/tailwind.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+    </style>
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="./dist/output.css" rel="stylesheet">
+
 </head>
 <body class="font-arabic bg-gray-50 text-gray-900">
     <nav class="bg-white shadow-lg sticky top-0 z-50">
@@ -15,45 +21,151 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
-                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">الرئيسية</a>
-                        <a href="programs.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">البرامج</a>
-                        <a href="nutrition.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium">التغذية</a>
-                        <a href="live.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">الحصص المباشرة</a>
-                        <a href="progress.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">تتبع التقدم</a>
-                        <a href="account.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">حسابي</a>
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">الرئيسية</a>
+                        <a href="programs.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">البرامج</a>
+                        <a href="nutrition.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">التغذية</a>
+                        <a href="live.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">الحصص المباشرة</a>
+                        <a href="progress.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">تتبع التقدم</a>
+                        <a href="account.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">حسابي</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4 space-x-reverse">
-                    <button id="langToggle" class="text-sm text-gray-600 hover:text-blue-600">EN</button>
-                    <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">تسجيل الدخول</a>
+                    <button id="themeToggle" class="theme-toggle">
+                        <svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                    <button id="langToggle" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                        <span class="lang-text">EN</span>
+                    </button>
+                    <div id="authSection" class="hidden md:block">
+                        <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">تسجيل الدخول</a>
+                    </div>
+                    <div id="userSection" class="hidden md:block">
+                        <div class="relative">
+                            <button id="userMenuBtn" class="flex items-center space-x-2 space-x-reverse text-gray-700 hover:text-blue-600 bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-lg transition-all duration-200">
+                                <span id="userName">اسم المستخدم</span>
+                                <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="userDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200">
+                                <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">الملف الشخصي</a>
+                                <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">تقدمي</a>
+                                <hr class="my-2 border-gray-200">
+                                <button id="logoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200">تسجيل الخروج</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
+                <div class="px-4 py-4 space-y-2">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الرئيسية</a>
+                    <a href="programs.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">البرامج</a>
+                    <a href="nutrition.html" class="text-blue-600 block px-4 py-3 rounded-lg text-base font-medium bg-blue-50">التغذية</a>
+                    <a href="live.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الحصص المباشرة</a>
+                    <a href="progress.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">تتبع التقدم</a>
+                    <a href="account.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">حسابي</a>
+                    <div class="pt-4 border-t border-gray-200 mt-4">
+                        <button id="mobileLangToggle" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block w-full text-right px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">
+                            <span class="mobile-lang-text">تغيير اللغة</span>
+                        </button>
+                        <div id="mobileAuthSection" class="block mt-3">
+                            <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white block w-full text-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 shadow-md">تسجيل الدخول</a>
+                        </div>
+                        <div id="mobileUserSection" class="hidden mt-3">
+                            <div class="px-4 py-3 text-sm text-gray-600 bg-gray-50 rounded-lg mb-3">مرحباً، <span id="mobileUserName" class="font-medium">اسم المستخدم</span></div>
+                            <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">الملف الشخصي</a>
+                            <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">تقدمي</a>
+                            <button id="mobileLogoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200 mt-2">تسجيل الخروج</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <header class="mb-6">
-            <h1 class="text-3xl font-bold">خطط التغذية</h1>
-            <p class="text-gray-600">الشهر الأول مجاناً</p>
-        </header>
+    <header class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+            </div>
+            <h1 class="text-4xl font-bold mb-4 text-gray-900">خطط التغذية</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">خطط تغذية مخصصة لتحقيق أهدافك مع الشهر الأول مجاناً</p>
+        </div>
+    </header>
 
-        <section class="bg-white rounded-2xl shadow p-6 mb-8">
-            <div class="grid md:grid-cols-3 gap-4">
-                <div>
-                    <label class="text-sm text-gray-700">الهدف</label>
-                    <select id="goalSelect" class="w-full mt-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section class="mb-12">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">اختر هدفك</h2>
+                        <p class="text-gray-600">اختر الهدف المناسب لك وسنقدم لك الخطة المثالية</p>
+                    </div>
                 </div>
-                <div>
-                    <label class="text-sm text-gray-700">الخطة</label>
-                    <select id="planSelect" class="w-full mt-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
-                </div>
-                <div class="flex items-end">
-                    <button id="startNutrition" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl font-semibold">ابدأ الشهر المجاني</button>
+                <div class="flex items-center gap-3">
+                    <button id="showFree" class="px-4 py-2 rounded-lg border-2 border-green-200 bg-green-50 text-green-700 hover:bg-green-100 transition-all duration-200 font-medium">
+                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        الخطط المجانية
+                    </button>
+                    <button id="showAll" class="px-4 py-2 rounded-lg border-2 border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition-all duration-200 font-medium">
+                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        جميع الخطط
+                    </button>
                 </div>
             </div>
         </section>
 
-        <section class="grid lg:grid-cols-3 gap-6">
+        <!-- قسم اختيار الهدف والخطة -->
+        <section class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">الهدف</label>
+                    <select id="goalSelect" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 hover:bg-white">
+                        <option value="">اختر هدفك</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">الخطة</label>
+                    <select id="planSelect" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 hover:bg-white">
+                        <option value="">اختر خطتك</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="startNutrition" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        ابدأ الشهر المجاني
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="bg-white rounded-2xl shadow p-6">
                 <h3 class="text-lg font-semibold mb-4">السعرات والمغذيات</h3>
                 <div id="macros" class="grid grid-cols-3 gap-4 text-center">
@@ -87,10 +199,14 @@
         </div>
     </footer>
 
+    <script src="js/theme.js" type="module"></script>
     <script src="js/app.js" type="module"></script>
+    <script src="js/navigation.js" type="module"></script>
+    <script src="js/nutrition.js" type="module"></script>
     <script type="module">
         import { Data } from './js/data.js';
         import { Auth } from './js/auth.js';
+        import { UI } from './js/ui.js';
 
         const goalSelect = document.getElementById('goalSelect');
         const planSelect = document.getElementById('planSelect');
@@ -124,12 +240,14 @@
             plans.forEach(p => {
                 const opt = document.createElement('option');
                 opt.value = p.id;
-                opt.textContent = p.name.ar + (p.isFree ? ' - مجاني' : '');
+                opt.textContent = p.name.ar + (p.isFree ? ' - مجاني' : ' - مدفوع');
                 planSelect.appendChild(opt);
             });
             if (plans.length) {
                 planSelect.value = plans[0].id;
-                renderPlan(await Data.getNutritionPlanById(currentGoal, planSelect.value));
+                const plan = await Data.getNutritionPlanById(currentGoal, planSelect.value);
+                renderPlan(plan);
+                if (!plan.isFree) UI.createPaywallModal({ title: 'خطة تغذية مدفوعة' });
             }
         }
 
@@ -162,15 +280,320 @@
                 window.location.href = 'account.html?redirect=' + encodeURIComponent(window.location.pathname);
                 return;
             }
+            if (currentPlan && !currentPlan.isFree) {
+                UI.createPaywallModal({ title: 'خطة تغذية مدفوعة' });
+                return;
+            }
             window.toast.success('تم تفعيل خطة التغذية! الشهر الأول مجاني');
         });
 
         goalSelect.addEventListener('change', loadPlans);
         planSelect.addEventListener('change', async () => {
-            renderPlan(await Data.getNutritionPlanById(currentGoal, planSelect.value));
+            const plan = await Data.getNutritionPlanById(currentGoal, planSelect.value);
+            renderPlan(plan);
+            if (plan && !plan.isFree) UI.createPaywallModal({ title: 'خطة تغذية مدفوعة' });
         });
 
         load();
     </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يسير - التغذية</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+    </style>
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="font-arabic bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-blue-600">يسير</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">الرئيسية</a>
+                        <a href="programs.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">البرامج</a>
+                        <a href="nutrition.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">التغذية</a>
+                        <a href="live.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">الحصص المباشرة</a>
+                        <a href="progress.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">تتبع التقدم</a>
+                        <a href="account.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">حسابي</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button id="themeToggle" class="theme-toggle">
+                        <svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                    <button id="langToggle" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                        <span class="lang-text">EN</span>
+                    </button>
+                    <div id="authSection" class="hidden md:block">
+                        <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">تسجيل الدخول</a>
+                    </div>
+                    <div id="userSection" class="hidden md:block">
+                        <div class="relative">
+                            <button id="userMenuBtn" class="flex items-center space-x-2 space-x-reverse text-gray-700 hover:text-blue-600 bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-lg transition-all duration-200">
+                                <span id="userName">اسم المستخدم</span>
+                                <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="userDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200">
+                                <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">الملف الشخصي</a>
+                                <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">تقدمي</a>
+                                <hr class="my-2 border-gray-200">
+                                <button id="logoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200">تسجيل الخروج</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
+                <div class="px-4 py-4 space-y-2">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الرئيسية</a>
+                    <a href="programs.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">البرامج</a>
+                    <a href="nutrition.html" class="text-blue-600 block px-4 py-3 rounded-lg text-base font-medium bg-blue-50">التغذية</a>
+                    <a href="live.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الحصص المباشرة</a>
+                    <a href="progress.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">تتبع التقدم</a>
+                    <a href="account.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">حسابي</a>
+                    <div class="pt-4 border-t border-gray-200 mt-4">
+                        <button id="mobileLangToggle" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block w-full text-right px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">
+                            <span class="mobile-lang-text">تغيير اللغة</span>
+                        </button>
+                        <div id="mobileAuthSection" class="block mt-3">
+                            <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white block w-full text-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 shadow-md">تسجيل الدخول</a>
+                        </div>
+                        <div id="mobileUserSection" class="hidden mt-3">
+                            <div class="px-4 py-3 text-sm text-gray-600 bg-gray-50 rounded-lg mb-3">مرحباً، <span id="mobileUserName" class="font-medium">اسم المستخدم</span></div>
+                            <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">الملف الشخصي</a>
+                            <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">تقدمي</a>
+                            <button id="mobileLogoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200 mt-2">تسجيل الخروج</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+            </div>
+            <h1 class="text-4xl font-bold mb-4 text-gray-900">خطط التغذية</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">خطط تغذية مخصصة لتحقيق أهدافك مع الشهر الأول مجاناً</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section class="mb-12">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">اختر هدفك</h2>
+                        <p class="text-gray-600">اختر الهدف المناسب لك وسنقدم لك الخطة المثالية</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="showFree" class="px-4 py-2 rounded-lg border-2 border-green-200 bg-green-50 text-green-700 hover:bg-green-100 transition-all duration-200 font-medium">
+                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        الخطط المجانية
+                    </button>
+                    <button id="showAll" class="px-4 py-2 rounded-lg border-2 border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition-all duration-200 font-medium">
+                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        جميع الخطط
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم اختيار الهدف والخطة -->
+        <section class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">الهدف</label>
+                    <select id="goalSelect" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 hover:bg-white">
+                        <option value="">اختر هدفك</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">الخطة</label>
+                    <select id="planSelect" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 hover:bg-white">
+                        <option value="">اختر خطتك</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="startNutrition" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        ابدأ الشهر المجاني
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl shadow p-6">
+                <h3 class="text-lg font-semibold mb-4">السعرات والمغذيات</h3>
+                <div id="macros" class="grid grid-cols-3 gap-4 text-center">
+                    <div class="p-4 rounded-xl bg-blue-50">
+                        <div class="text-2xl font-bold" id="calories">--</div>
+                        <div class="text-gray-600 text-sm">سعرات</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-green-50">
+                        <div class="text-2xl font-bold" id="protein">--g</div>
+                        <div class="text-gray-600 text-sm">بروتين</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-yellow-50">
+                        <div class="text-2xl font-bold" id="carbs">--g</div>
+                        <div class="text-gray-600 text-sm">كربوهيدرات</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow p-6 lg:col-span-2">
+                <h3 class="text-lg font-semibold mb-4">قائمة أسبوعية (مثال)</h3>
+                <div id="menu" class="grid sm:grid-cols-2 gap-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 يسير. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js" type="module"></script>
+    <script src="js/app.js" type="module"></script>
+    <script src="js/navigation.js" type="module"></script>
+    <script src="js/nutrition.js" type="module"></script>
+    <script type="module">
+        import { Data } from './js/data.js';
+        import { Auth } from './js/auth.js';
+        import { UI } from './js/ui.js';
+
+        const goalSelect = document.getElementById('goalSelect');
+        const planSelect = document.getElementById('planSelect');
+        const calories = document.getElementById('calories');
+        const protein = document.getElementById('protein');
+        const carbs = document.getElementById('carbs');
+        const menu = document.getElementById('menu');
+        const startBtn = document.getElementById('startNutrition');
+
+        let currentGoal = null;
+        let currentPlan = null;
+
+        async function load() {
+            const goals = await Data.getNutritionGoals();
+            goals.forEach(g => {
+                const opt = document.createElement('option');
+                opt.value = g.id;
+                opt.textContent = g.name.ar;
+                goalSelect.appendChild(opt);
+            });
+            if (goals.length) {
+                goalSelect.value = goals[0].id;
+                await loadPlans();
+            }
+        }
+
+        async function loadPlans() {
+            currentGoal = goalSelect.value;
+            const plans = await Data.getNutritionPlans(currentGoal);
+            planSelect.innerHTML = '';
+            plans.forEach(p => {
+                const opt = document.createElement('option');
+                opt.value = p.id;
+                opt.textContent = p.name.ar + (p.isFree ? ' - مجاني' : ' - مدفوع');
+                planSelect.appendChild(opt);
+            });
+            if (plans.length) {
+                planSelect.value = plans[0].id;
+                const plan = await Data.getNutritionPlanById(currentGoal, planSelect.value);
+                renderPlan(plan);
+                if (!plan.isFree) UI.createPaywallModal({ title: 'خطة تغذية مدفوعة' });
+            }
+        }
+
+        function renderPlan(plan) {
+            currentPlan = plan;
+            calories.textContent = plan.calories;
+            protein.textContent = plan.macros.protein + 'g';
+            carbs.textContent = plan.macros.carbs + 'g';
+
+            // Render Monday example menu
+            const monday = plan.weeklyMenu.monday;
+            menu.innerHTML = '';
+            Object.entries(monday).forEach(([meal, info]) => {
+                const card = document.createElement('div');
+                card.className = 'border border-gray-200 rounded-xl p-4';
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-semibold">${meal}</h4>
+                        <span class="text-sm text-gray-500">${info.calories} kcal</span>
+                    </div>
+                    <p class="text-gray-700">${info.ar}</p>
+                `;
+                menu.appendChild(card);
+            });
+        }
+
+        startBtn.addEventListener('click', () => {
+            const user = Auth.getUser();
+            if (!user) {
+                window.location.href = 'account.html?redirect=' + encodeURIComponent(window.location.pathname);
+                return;
+            }
+            if (currentPlan && !currentPlan.isFree) {
+                UI.createPaywallModal({ title: 'خطة تغذية مدفوعة' });
+                return;
+            }
+            window.toast.success('تم تفعيل خطة التغذية! الشهر الأول مجاني');
+        });
+
+        goalSelect.addEventListener('change', loadPlans);
+        planSelect.addEventListener('change', async () => {
+            const plan = await Data.getNutritionPlanById(currentGoal, planSelect.value);
+            renderPlan(plan);
+            if (plan && !plan.isFree) UI.createPaywallModal({ title: 'خطة تغذية مدفوعة' });
+        });
+
+        load();
+    </script>
+</body>
+>>>>>>> c0fc4a30396e66e56d0d43ded9547eb949ca760f
 </html> 

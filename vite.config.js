@@ -1,7 +1,13 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
+// Use GitHub Pages subpath when building in Actions; otherwise use root
+const basePath = process.env.GITHUB_REPOSITORY
+  ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
+  : '/'
+
 export default defineConfig({
+    base: basePath,
 	server: {
 		open: '/pages/index.html'
 	},

@@ -17,6 +17,7 @@
                 <div class="flex items-center">
                     <div class="text-2xl font-bold text-blue-600">يسير</div>
                 </div>
+
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
                         <a href="../index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">الرئيسية</a>
@@ -27,6 +28,42 @@
                         <a href="account.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">حسابي</a>
                     </div>
                 </div>
+
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button id="themeToggle" class="theme-toggle">
+                        <svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                    <button id="langToggle" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                        <span class="lang-text">EN</span>
+                    </button>
+
+                    <div id="authSection" class="hidden md:block">
+                        <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">تسجيل الدخول</a>
+                    </div>
+
+                    <div id="userSection" class="hidden md:block">
+                        <div class="relative">
+                            <button id="userMenuBtn" class="flex items-center space-x-2 space-x-reverse text-gray-700 hover:text-blue-600 bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-lg transition-all duration-200">
+                                <span id="userName">اسم المستخدم</span>
+                                <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="userDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200">
+                                <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">الملف الشخصي</a>
+                                <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">تقدمي</a>
+                                <hr class="my-2 border-gray-200">
+                                <button id="logoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200">تسجيل الخروج</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="md:hidden">
                     <button id="mobileMenuBtn" class="text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,6 +72,7 @@
                     </button>
                 </div>
             </div>
+
             <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
                 <div class="px-4 py-4 space-y-2">
                     <a href="../index.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الرئيسية</a>
@@ -43,6 +81,21 @@
                     <a href="live.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الحصص المباشرة</a>
                     <a href="progress.html" class="text-blue-600 block px-4 py-3 rounded-lg text-base font-medium bg-blue-50">تتبع التقدم</a>
                     <a href="account.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">حسابي</a>
+
+                    <div class="pt-4 border-t border-gray-200 mt-4">
+                        <button id="mobileLangToggle" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block w-full text-right px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">
+                            <span class="mobile-lang-text">تغيير اللغة</span>
+                        </button>
+                        <div id="mobileAuthSection" class="block mt-3">
+                            <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white block w-full text-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 shadow-md">تسجيل الدخول</a>
+                        </div>
+                        <div id="mobileUserSection" class="hidden mt-3">
+                            <div class="px-4 py-3 text-sm text-gray-600 bg-gray-50 rounded-lg mb-3">مرحباً، <span id="mobileUserName" class="font-medium">اسم المستخدم</span></div>
+                            <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">الملف الشخصي</a>
+                            <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">تقدمي</a>
+                            <button id="mobileLogoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200 mt-2">تسجيل الخروج</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,7 +113,7 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx_auto px-4 sm:px-6 lg:px-8 py-12">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <section class="grid md:grid-cols-3 gap-8">
             <div class="bg-white rounded-2xl shadow p-6 space-y-6">
                 <div>
@@ -132,8 +185,8 @@
         const prsChart = document.getElementById('prsChart');
 
         function redraw() {
-            Progress.drawWeight(weightChart);
-            Progress.drawPRs(prsChart);
+            Progress.drawWeightChart(weightChart);
+            Progress.drawPRsChart(prsChart);
         }
 
         addWeight.addEventListener('click', () => {
@@ -155,521 +208,4 @@
         redraw();
     </script>
 </body>
-</html>
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>يسير - تتبع التقدم</title>
-    <link rel="stylesheet" href="../css/tailwind.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
-    </style>
-    <link rel="stylesheet" href="../css/custom.css">
-    
-    <link href="./dist/output.css" rel="stylesheet">
-</head>
-<body class="font-arabic bg-gray-50 text-gray-900">
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <div class="text-2xl font-bold text-blue-600">يسير</div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
-                        <a href="../index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">الرئيسية</a>
-                        <a href="programs.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">البرامج</a>
-                        <a href="nutrition.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">التغذية</a>
-                        <a href="live.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">الحصص المباشرة</a>
-                        <a href="progress.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">تتبع التقدم</a>
-                        <a href="account.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">حسابي</a>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4 space-x-reverse">
-                    <button id="themeToggle" class="theme-toggle">
-                        <svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
-                        <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                        </svg>
-                    </button>
-                    <button id="langToggle" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
-                        <span class="lang-text">EN</span>
-                    </button>
-                    <div id="authSection" class="hidden md:block">
-                        <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">تسجيل الدخول</a>
-                    </div>
-                    <div id="userSection" class="hidden md:block">
-                        <div class="relative">
-                            <button id="userMenuBtn" class="flex items-center space-x-2 space-x-reverse text-gray-700 hover:text-blue-600 bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-lg transition-all duration-200">
-                                <span id="userName">اسم المستخدم</span>
-                                <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <div id="userDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200">
-                                <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">الملف الشخصي</a>
-                                <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">تقدمي</a>
-                                <hr class="my-2 border-gray-200">
-                                <button id="logoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200">تسجيل الخروج</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
-                <div class="px-4 py-4 space-y-2">
-                    <a href="../index.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الرئيسية</a>
-                    <a href="programs.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">البرامج</a>
-                    <a href="nutrition.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">التغذية</a>
-                    <a href="live.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الحصص المباشرة</a>
-                    <a href="progress.html" class="text-blue-600 block px-4 py-3 rounded-lg text-base font-medium bg-blue-50">تتبع التقدم</a>
-                    <a href="account.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">حسابي</a>
-                    <div class="pt-4 border-t border-gray-200 mt-4">
-                        <button id="mobileLangToggle" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block w-full text-right px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">
-                            <span class="mobile-lang-text">تغيير اللغة</span>
-                        </button>
-                        <div id="mobileAuthSection" class="block mt-3">
-                            <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white block w-full text-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 shadow-md">تسجيل الدخول</a>
-                        </div>
-                        <div id="mobileUserSection" class="hidden mt-3">
-                            <div class="px-4 py-3 text-sm text-gray-600 bg-gray-50 rounded-lg mb-3">مرحباً، <span id="mobileUserName" class="font-medium">اسم المستخدم</span></div>
-                            <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">الملف الشخصي</a>
-                            <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">تقدمي</a>
-                            <button id="mobileLogoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200 mt-2">تسجيل الخروج</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <header class="bg-gradient-to-br from-purple-50 via-violet-50 to-indigo-100 py-16">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
-            </div>
-            <h1 class="text-4xl font-bold mb-4 text-gray-900">تتبع التقدم</h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">راقب تقدمك وحقق أهدافك مع رسوم بيانية مفصلة</p>
-        </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <section class="mb-12">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-2xl font-bold text-gray-900">إحصائيات التقدم</h2>
-                        <p class="text-gray-600">تابع أداءك وتحسيناتك مع الوقت</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <button id="showWeek" class="px-4 py-2 rounded-lg border-2 border-purple-200 bg-purple-50 text-purple-700 hover:bg-purple-100 transition-all duration-200 font-medium">
-                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        الأسبوع
-                    </button>
-                    <button id="showMonth" class="px-4 py-2 rounded-lg border-2 border-violet-200 bg-violet-50 text-violet-700 hover:bg-violet-100 transition-all duration-200 font-medium">
-                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        الشهر
-                    </button>
-                    <button id="showYear" class="px-4 py-2 rounded-lg border-2 border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition-all duration-200 font-medium">
-                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        السنة
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl shadow p-6 space-y-6">
-                <div>
-                    <h3 class="font-semibold mb-2">الوزن</h3>
-                    <div class="flex gap-2">
-                        <input id="weightInput" type="number" step="0.1" placeholder="كلغ" class="flex-1 border rounded-lg px-3 py-2">
-                        <button id="addWeight" class="px-4 py-2 bg-blue-600 text-white rounded-lg">إضافة</button>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">القياسات (سم)</h3>
-                    <div class="grid grid-cols-2 gap-2 mb-2">
-                        <input id="waistInput" type="number" step="0.1" placeholder="خصر" class="border rounded-lg px-3 py-2">
-                        <input id="chestInput" type="number" step="0.1" placeholder="صدر" class="border rounded-lg px-3 py-2">
-                    </div>
-                    <button id="addMeasures" class="px-4 py-2 bg-blue-600 text-white rounded-lg w-full">إضافة</button>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">أرقام القوة (كغ)</h3>
-                    <div class="grid grid-cols-3 gap-2 mb-2">
-                        <input id="squatInput" type="number" step="0.5" placeholder="سكوات" class="border rounded-lg px-3 py-2">
-                        <input id="benchInput" type="number" step="0.5" placeholder="بنش" class="border rounded-lg px-3 py-2">
-                        <input id="deadInput" type="number" step="0.5" placeholder="ديدلفت" class="border rounded-lg px-3 py-2">
-                    </div>
-                    <button id="addPRs" class="px-4 py-2 bg-blue-600 text-white rounded-lg w-full">إضافة</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-2xl shadow p-6 lg:col-span-2">
-                <h3 class="font-semibold mb-4">الرسوم البيانية</h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-sm text-gray-600 mb-2">الوزن عبر الوقت</h4>
-                        <div id="weightChart" class="w-full h-48 bg-gray-50 rounded-lg border"></div>
-                    </div>
-                    <div>
-                        <h4 class="text-sm text-gray-600 mb-2">أرقام القوة (أعلى قيم)</h4>
-                        <div id="prsChart" class="w-full h-48 bg-gray-50 rounded-lg border"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-900 text-white py-12 mt-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 يسير. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="../js/theme.js" type="module"></script>
-    <script src="../js/app.js" type="module"></script>
-    <script src="../js/navigation.js" type="module"></script>
-    <script type="module">
-        import { Progress } from '../js/progress.js';
-
-        const weightInput = document.getElementById('weightInput');
-        const addWeight = document.getElementById('addWeight');
-        const waistInput = document.getElementById('waistInput');
-        const chestInput = document.getElementById('chestInput');
-        const addMeasures = document.getElementById('addMeasures');
-        const squatInput = document.getElementById('squatInput');
-        const benchInput = document.getElementById('benchInput');
-        const deadInput = document.getElementById('deadInput');
-        const addPRs = document.getElementById('addPRs');
-        const weightChart = document.getElementById('weightChart');
-        const prsChart = document.getElementById('prsChart');
-
-        function redraw() {
-            Progress.drawWeightChart(weightChart);
-            Progress.drawPRsChart(prsChart);
-        }
-
-        addWeight.addEventListener('click', () => {
-            const w = parseFloat(weightInput.value);
-            if (!isNaN(w) && w > 0) {
-                Progress.addWeight(w);
-                weightInput.value = '';
-                redraw();
-                window.toast.success('تم إضافة الوزن');
-            }
-        });
-        addMeasures.addEventListener('click', () => {
-            const waist = parseFloat(waistInput.value);
-            const chest = parseFloat(chestInput.value);
-            if (!isNaN(waist) && !isNaN(chest)) {
-                Progress.addMeasurements({ waist, chest });
-                waistInput.value = '';
-                chestInput.value = '';
-                window.toast.success('تم إضافة القياسات');
-            }
-        });
-        addPRs.addEventListener('click', () => {
-            const squat = parseFloat(squatInput.value);
-            const bench = parseFloat(benchInput.value);
-            const deadlift = parseFloat(deadInput.value);
-            if (!isNaN(squat) && !isNaN(bench) && !isNaN(deadlift)) {
-                Progress.addPRs({ squat, bench, deadlift });
-                squatInput.value = '';
-                benchInput.value = '';
-                deadInput.value = '';
-                redraw();
-                window.toast.success('تم إضافة أرقام القوة');
-            }
-        });
-
-        redraw();
-    </script>
-</body>
-=======
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>يسير - تتبع التقدم</title>
-    <link rel="stylesheet" href="css/tailwind.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
-    </style>
-    <link rel="stylesheet" href="css/custom.css">
-</head>
-<body class="font-arabic bg-gray-50 text-gray-900">
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <div class="text-2xl font-bold text-blue-600">يسير</div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
-                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">الرئيسية</a>
-                        <a href="programs.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">البرامج</a>
-                        <a href="nutrition.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">التغذية</a>
-                        <a href="live.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">الحصص المباشرة</a>
-                        <a href="progress.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">تتبع التقدم</a>
-                        <a href="account.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">حسابي</a>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4 space-x-reverse">
-                    <button id="themeToggle" class="theme-toggle">
-                        <svg id="sunIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
-                        <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                        </svg>
-                    </button>
-                    <button id="langToggle" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
-                        <span class="lang-text">EN</span>
-                    </button>
-                    <div id="authSection" class="hidden md:block">
-                        <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">تسجيل الدخول</a>
-                    </div>
-                    <div id="userSection" class="hidden md:block">
-                        <div class="relative">
-                            <button id="userMenuBtn" class="flex items-center space-x-2 space-x-reverse text-gray-700 hover:text-blue-600 bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-lg transition-all duration-200">
-                                <span id="userName">اسم المستخدم</span>
-                                <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <div id="userDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200">
-                                <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">الملف الشخصي</a>
-                                <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">تقدمي</a>
-                                <hr class="my-2 border-gray-200">
-                                <button id="logoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200">تسجيل الخروج</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
-                <div class="px-4 py-4 space-y-2">
-                    <a href="index.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الرئيسية</a>
-                    <a href="programs.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">البرامج</a>
-                    <a href="nutrition.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">التغذية</a>
-                    <a href="live.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">الحصص المباشرة</a>
-                    <a href="progress.html" class="text-blue-600 block px-4 py-3 rounded-lg text-base font-medium bg-blue-50">تتبع التقدم</a>
-                    <a href="account.html" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">حسابي</a>
-                    <div class="pt-4 border-t border-gray-200 mt-4">
-                        <button id="mobileLangToggle" class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 block w-full text-right px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200">
-                            <span class="mobile-lang-text">تغيير اللغة</span>
-                        </button>
-                        <div id="mobileAuthSection" class="block mt-3">
-                            <a href="account.html" class="bg-blue-600 hover:bg-blue-700 text-white block w-full text-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 shadow-md">تسجيل الدخول</a>
-                        </div>
-                        <div id="mobileUserSection" class="hidden mt-3">
-                            <div class="px-4 py-3 text-sm text-gray-600 bg-gray-50 rounded-lg mb-3">مرحباً، <span id="mobileUserName" class="font-medium">اسم المستخدم</span></div>
-                            <a href="account.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">الملف الشخصي</a>
-                            <a href="progress.html" class="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200">تقدمي</a>
-                            <button id="mobileLogoutBtn" class="block w-full text-right px-4 py-3 text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200 mt-2">تسجيل الخروج</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <header class="bg-gradient-to-br from-purple-50 via-violet-50 to-indigo-100 py-16">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
-            </div>
-            <h1 class="text-4xl font-bold mb-4 text-gray-900">تتبع التقدم</h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">راقب تقدمك وحقق أهدافك مع رسوم بيانية مفصلة</p>
-        </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <section class="mb-12">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-2xl font-bold text-gray-900">إحصائيات التقدم</h2>
-                        <p class="text-gray-600">تابع أداءك وتحسيناتك مع الوقت</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <button id="showWeek" class="px-4 py-2 rounded-lg border-2 border-purple-200 bg-purple-50 text-purple-700 hover:bg-purple-100 transition-all duration-200 font-medium">
-                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        الأسبوع
-                    </button>
-                    <button id="showMonth" class="px-4 py-2 rounded-lg border-2 border-violet-200 bg-violet-50 text-violet-700 hover:bg-violet-100 transition-all duration-200 font-medium">
-                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        الشهر
-                    </button>
-                    <button id="showYear" class="px-4 py-2 rounded-lg border-2 border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition-all duration-200 font-medium">
-                        <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        السنة
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl shadow p-6 space-y-6">
-                <div>
-                    <h3 class="font-semibold mb-2">الوزن</h3>
-                    <div class="flex gap-2">
-                        <input id="weightInput" type="number" step="0.1" placeholder="كلغ" class="flex-1 border rounded-lg px-3 py-2">
-                        <button id="addWeight" class="px-4 py-2 bg-blue-600 text-white rounded-lg">إضافة</button>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">القياسات (سم)</h3>
-                    <div class="grid grid-cols-2 gap-2 mb-2">
-                        <input id="waistInput" type="number" step="0.1" placeholder="خصر" class="border rounded-lg px-3 py-2">
-                        <input id="chestInput" type="number" step="0.1" placeholder="صدر" class="border rounded-lg px-3 py-2">
-                    </div>
-                    <button id="addMeasures" class="px-4 py-2 bg-blue-600 text-white rounded-lg w-full">إضافة</button>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-2">أرقام القوة (كغ)</h3>
-                    <div class="grid grid-cols-3 gap-2 mb-2">
-                        <input id="squatInput" type="number" step="0.5" placeholder="سكوات" class="border rounded-lg px-3 py-2">
-                        <input id="benchInput" type="number" step="0.5" placeholder="بنش" class="border rounded-lg px-3 py-2">
-                        <input id="deadInput" type="number" step="0.5" placeholder="ديدلفت" class="border rounded-lg px-3 py-2">
-                    </div>
-                    <button id="addPRs" class="px-4 py-2 bg-blue-600 text-white rounded-lg w-full">إضافة</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-2xl shadow p-6 lg:col-span-2">
-                <h3 class="font-semibold mb-4">الرسوم البيانية</h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-sm text-gray-600 mb-2">الوزن عبر الوقت</h4>
-                        <div id="weightChart" class="w-full h-48 bg-gray-50 rounded-lg border"></div>
-                    </div>
-                    <div>
-                        <h4 class="text-sm text-gray-600 mb-2">أرقام القوة (أعلى قيم)</h4>
-                        <div id="prsChart" class="w-full h-48 bg-gray-50 rounded-lg border"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-900 text-white py-12 mt-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 يسير. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/theme.js" type="module"></script>
-    <script src="js/app.js" type="module"></script>
-    <script src="js/navigation.js" type="module"></script>
-    <script type="module">
-        import { Progress } from './js/progress.js';
-
-        const weightInput = document.getElementById('weightInput');
-        const addWeight = document.getElementById('addWeight');
-        const waistInput = document.getElementById('waistInput');
-        const chestInput = document.getElementById('chestInput');
-        const addMeasures = document.getElementById('addMeasures');
-        const squatInput = document.getElementById('squatInput');
-        const benchInput = document.getElementById('benchInput');
-        const deadInput = document.getElementById('deadInput');
-        const addPRs = document.getElementById('addPRs');
-        const weightChart = document.getElementById('weightChart');
-        const prsChart = document.getElementById('prsChart');
-
-        function redraw() {
-            Progress.drawWeightChart(weightChart);
-            Progress.drawPRsChart(prsChart);
-        }
-
-        addWeight.addEventListener('click', () => {
-            const w = parseFloat(weightInput.value);
-            if (!isNaN(w) && w > 0) {
-                Progress.addWeight(w);
-                weightInput.value = '';
-                redraw();
-                window.toast.success('تم إضافة الوزن');
-            }
-        });
-        addMeasures.addEventListener('click', () => {
-            const waist = parseFloat(waistInput.value);
-            const chest = parseFloat(chestInput.value);
-            if (!isNaN(waist) && !isNaN(chest)) {
-                Progress.addMeasurements({ waist, chest });
-                waistInput.value = '';
-                chestInput.value = '';
-                window.toast.success('تم إضافة القياسات');
-            }
-        });
-        addPRs.addEventListener('click', () => {
-            const squat = parseFloat(squatInput.value);
-            const bench = parseFloat(benchInput.value);
-            const deadlift = parseFloat(deadInput.value);
-            if (!isNaN(squat) && !isNaN(bench) && !isNaN(deadlift)) {
-                Progress.addPRs({ squat, bench, deadlift });
-                squatInput.value = '';
-                benchInput.value = '';
-                deadInput.value = '';
-                redraw();
-                window.toast.success('تم إضافة أرقام القوة');
-            }
-        });
-
-        redraw();
-    </script>
-</body>
->>>>>>> c0fc4a30396e66e56d0d43ded9547eb949ca760f
 </html> 

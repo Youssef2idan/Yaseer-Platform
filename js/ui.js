@@ -25,10 +25,39 @@
 			const detailBtn = card.querySelector('[data-detail]');
 			detailBtn.addEventListener('click', (e) => {
 				e.preventDefault();
-				if (program.isFree) {
-					window.location.href = `program.html?sport=${program.sportId}`;
-				} else {
+				if (!program.isFree) {
 					UI.createPaywallModal({ title: 'خطة تدريب مدفوعة' });
+					return;
+				}
+				const features = (program.features || []).map(f => `
+					<li class="flex items-center gap-2">
+						<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+						<span>${f}</span>
+					</li>
+				`).join('');
+				UI.createModal({
+					title: program.name.ar,
+					content: `
+						<p class="text-gray-700 mb-4">${program.description.ar}</p>
+						<ul class="space-y-2 mb-6">${features}</ul>
+						<div class="flex items-center justify-end gap-3">
+							<button data-close class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200">إغلاق</button>
+							<button data-start class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">ابدأ الآن</button>
+						</div>
+					`
+				});
+				const overlay = document.querySelector('.modal')?.parentElement || document.body.lastElementChild;
+				if (overlay) {
+					const modalEl = overlay.querySelector('.modal') || overlay;
+					modalEl.addEventListener('click', (ev) => {
+						if (ev.target && ev.target.hasAttribute && ev.target.hasAttribute('data-start')) {
+							window.toast?.success?.('تم تفعيل البرنامج المجاني!');
+							overlay.remove();
+						}
+						if (ev.target && ev.target.hasAttribute && ev.target.hasAttribute('data-close')) {
+							overlay.remove();
+						}
+					});
 				}
 			});
 			return card;

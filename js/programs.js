@@ -29,8 +29,8 @@ class ProgramsManager {
 
     async loadPrograms() {
         try {
-            const sports = await Data.getSports();
-            this.renderPrograms(sports);
+            const programs = await Data.getAllPrograms();
+            this.renderPrograms(programs);
         } catch (error) {
             console.error('Error loading programs:', error);
             this.showError('حدث خطأ في تحميل البرامج');
@@ -54,18 +54,22 @@ class ProgramsManager {
         }
     }
 
-    async renderPrograms(sports) {
+    async renderPrograms(programs) {
         if (!this.programsGrid) return;
-        
         this.programsGrid.innerHTML = '';
-        
-        for (const sport of sports) {
-            const sportCard = this.createSportCard(sport);
-            this.programsGrid.appendChild(sportCard);
-        }
 
-        // Wire up detail buttons after rendering
-        this.setupProgramDetailButtons();
+        let itemsToShow = Array.isArray(programs) ? programs : [];
+        if (this.currentFilter === 'free') {
+            itemsToShow = itemsToShow.filter(p => p.isFree);
+        }
+        if (!itemsToShow.length) {
+            this.programsGrid.innerHTML = '<div class="col-span-full text-center text-gray-600">لا توجد برامج مطابقة</div>';
+            return;
+        }
+        itemsToShow.forEach(p => {
+            const card = UI.createProgramCard(p);
+            this.programsGrid.appendChild(card);
+        });
     }
 
     createSportCard(sport) {

@@ -78,9 +78,9 @@ class ThemeManager {
 
     setupEventListeners() {
         const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => this.toggleTheme());
-        }
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        if (themeToggle) themeToggle.addEventListener('click', () => this.toggleTheme());
+        if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', () => this.toggleTheme());
     }
 }
 

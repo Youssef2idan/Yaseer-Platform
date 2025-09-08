@@ -1,5 +1,5 @@
 // Navigation and Authentication Management
-class NavigationManager {
+export class NavigationManager {
     constructor() {
         this.isAuthenticated = false;
         this.currentUser = null;
@@ -334,7 +334,9 @@ class NavigationManager {
 // Initialize navigation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded, initializing NavigationManager');
-    window.navigationManager = new NavigationManager();
+    if (!window.navigationManager) {
+        window.navigationManager = new NavigationManager();
+    }
     
     // Load saved language preference
     const savedLanguage = localStorage.getItem('yaseer_language');

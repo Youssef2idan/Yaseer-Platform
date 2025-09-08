@@ -18,7 +18,6 @@ export default defineConfig({
 				home: resolve(__dirname, 'pages/index.html'),
 				account: resolve(__dirname, 'pages/account.html'),
 				programs: resolve(__dirname, 'pages/programs.html'),
-				program: resolve(__dirname, 'pages/program.html'),
 				nutrition: resolve(__dirname, 'pages/nutrition.html'),
 				live: resolve(__dirname, 'pages/live.html'),
 				progress: resolve(__dirname, 'pages/progress.html'),

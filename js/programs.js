@@ -29,7 +29,7 @@ class ProgramsManager {
 
     async loadPrograms() {
         try {
-            const sports = await Data.getAllSports();
+            const sports = await Data.getSports();
             this.renderPrograms(sports);
         } catch (error) {
             console.error('Error loading programs:', error);
@@ -63,6 +63,9 @@ class ProgramsManager {
             const sportCard = this.createSportCard(sport);
             this.programsGrid.appendChild(sportCard);
         }
+
+        // Wire up detail buttons after rendering
+        this.setupProgramDetailButtons();
     }
 
     createSportCard(sport) {

@@ -206,7 +206,13 @@ export class NavigationManager {
 
         console.log('Setting up language toggle:', { langToggle, mobileLangToggle });
 
-        // Set initial language state
+        // Set initial language state from persisted value
+        const savedLanguage = localStorage.getItem('yaseer_language') || localStorage.getItem('yaseer_lang');
+        if (savedLanguage === 'ar' || savedLanguage === 'en') {
+            this.currentLanguage = savedLanguage;
+            document.documentElement.lang = savedLanguage;
+            document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
+        }
         this.updateLanguageUI();
 
         [langToggle, mobileLangToggle].forEach(btn => {
@@ -233,8 +239,9 @@ export class NavigationManager {
         
         this.updateLanguageUI();
         
-        // Save language preference
+        // Save language preference (use unified key)
         localStorage.setItem('yaseer_language', this.currentLanguage);
+        localStorage.removeItem('yaseer_lang');
     }
 
     updateLanguageUI() {

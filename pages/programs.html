@@ -156,44 +156,5 @@
     <script src="../js/app.js" type="module"></script>
     <script src="../js/navigation.js" type="module"></script>
     <script src="../js/programs.js" type="module"></script>
-    <script type="module">
-        import { Data } from '../js/data.js';
-        import { UI } from '../js/ui.js';
-
-        const programsGrid = document.getElementById('programsGrid');
-        const sportFilter = document.getElementById('sportFilter');
-        const levelFilter = document.getElementById('levelFilter');
-
-        async function load() {
-            const data = await Data.getSports();
-            // Populate sport filter
-            data.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.id;
-                opt.textContent = s.name.ar;
-                sportFilter.appendChild(opt);
-            });
-            render();
-        }
-
-        function render() {
-            programsGrid.innerHTML = '';
-            const sport = sportFilter.value;
-            const level = levelFilter.value;
-
-            Data.getAllPrograms({ sport, level }).then(items => {
-                if (!items.length) {
-                    programsGrid.innerHTML = '<div class="col-span-full text-center text-gray-600">لا توجد برامج مطابقة</div>';
-                    return;
-                }
-                items.forEach(p => programsGrid.appendChild(UI.createProgramCard(p)));
-            });
-        }
-
-        sportFilter.addEventListener('change', render);
-        levelFilter.addEventListener('change', render);
-
-        load();
-    </script>
 </body>
 </html>

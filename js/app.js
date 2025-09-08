@@ -73,8 +73,10 @@ const i18n = {
     }
 };
 
-// Current language state
-let currentLang = 'ar';
+// Current language state (unified storage key)
+let currentLang = localStorage.getItem('yaseer_language') || localStorage.getItem('yaseer_lang') || 'ar';
+localStorage.setItem('yaseer_language', currentLang);
+localStorage.removeItem('yaseer_lang');
 
 // Language toggle functionality
 function toggleLanguage() {
@@ -92,7 +94,7 @@ function toggleLanguage() {
     updatePageLanguage();
     
     // Save preference
-    localStorage.setItem('yaseer_lang', currentLang);
+    localStorage.setItem('yaseer_language', currentLang);
 }
 
 // Update page language

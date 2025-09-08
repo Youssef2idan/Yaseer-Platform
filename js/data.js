@@ -6,7 +6,11 @@
 const ROOT_PREFIX = window.location.pathname.includes('/pages/') ? '../' : './';
 
 async function fetchJSON(path) {
-	const url = path.startsWith('http') ? path : `${ROOT_PREFIX}${path.replace(/^\/?/, '')}`;
+	const url = path.startsWith('http')
+		? path
+		: (path.startsWith('data/')
+			? `/data/${path.slice(5)}`
+			: `${ROOT_PREFIX}${path.replace(/^\/?/, '')}`);
 	const res = await fetch(url);
 	if (!res.ok) throw new Error('Failed to load ' + url);
 	return res.json();

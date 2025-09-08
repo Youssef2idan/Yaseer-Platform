@@ -326,14 +326,13 @@ const Utils = {
 };
 
 // Main application file
-import { NavigationManager } from './navigation.js';
+// NavigationManager is initialized within navigation.js; avoid double init here
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     console.log('يسير Platform loaded successfully!');
     
-    // Initialize navigation manager
-    window.navigationManager = new NavigationManager();
+    // Navigation manager is set up by navigation.js
     
     // Add any additional app initialization here
     setupGlobalEventListeners();

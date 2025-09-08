@@ -3,9 +3,12 @@
  * Fetches local JSON and provides getters
  */
 
+const ROOT_PREFIX = window.location.pathname.includes('/pages/') ? '../' : './';
+
 async function fetchJSON(path) {
-	const res = await fetch(path);
-	if (!res.ok) throw new Error('Failed to load ' + path);
+	const url = path.startsWith('http') ? path : `${ROOT_PREFIX}${path.replace(/^\/?/, '')}`;
+	const res = await fetch(url);
+	if (!res.ok) throw new Error('Failed to load ' + url);
 	return res.json();
 }
 
